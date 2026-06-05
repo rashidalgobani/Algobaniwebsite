@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - WiFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --dark: #0D1B2A;
+            --dark-light: #1B2838;
+            --accent: #1E3A5F;
+            --white: #FFFFFF;
+            --gray: #8B9DB8;
+            --error: #E74C3C;
+            --success: #2ECC71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--accent) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(13, 27, 42, 0.95);
+            border: 1px solid var(--gold);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--dark);
+        }
+
+        .hotel-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .hotel-sub {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .login-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 25px;
+        }
+
+        .wifi-icon {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--dark-light);
+            border: 2px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+            color: var(--white);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(201, 169, 98, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray);
+            opacity: 0.6;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+            border: none;
+            border-radius: 14px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(201, 169, 98, 0.5);
+        }
+
+        .btn-login i {
+            margin-left: 8px;
+        }
+
+        .terms {
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .terms a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-light);
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .guest-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            border-radius: 14px;
+            color: var(--gold);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .guest-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+        .back-link i {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <i class="fas fa-gem"></i>
+        </div>
+
+        <div class="hotel-name">التميز</div>
+        <div class="hotel-sub">للضيافة</div>
+
+        <div class="wifi-icon">
+            <i class="fas fa-wifi"></i>
+        </div>
+
+        <div class="login-title">تسجيل الدخول للشبكة</div>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label class="form-label">رقم الجوال أو البريد الإلكتروني</label>
+                <input type="text" class="form-input" placeholder="أدخل رقم الجوال" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">كلمة المرور</label>
+                <input type="password" class="form-input" placeholder="أدخل كلمة المرور" required>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                تسجيل الدخول
+            </button>
+        </form>
+
+        <a href="index.html" class="guest-btn">
+            <i class="fas fa-user"></i>
+            الدخول كزائر
+        </a>
+
+        <div class="divider">
+            <span>أو سجل بـ</span>
+        </div>
+
+        <div class="social-login">
+            <button class="social-btn" title="Google">
+                <i class="fab fa-google"></i>
+            </button>
+            <button class="social-btn" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </button>
+            <button class="social-btn" title="Apple">
+                <i class="fab fa-apple"></i>
+            </button>
+        </div>
+
+        <div class="terms">
+            بالتسجيل، أنت توافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-right"></i>
+            العودة للصفحة الرئيسية
+        </a>
+    </div>
+</body>
+</html>
